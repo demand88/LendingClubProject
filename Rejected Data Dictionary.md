@@ -1,9 +1,0 @@
-Amount Requested	float64	float64	Numeric loan amount (continuous). Allows easy statistical analysis (mean, median, histograms, outliers) and comparisons with approved loans. Low memory and fast computations.
-Application Date	object	object (then → datetime)	Date stored as string on load for speed. Convert later with pd.to_datetime() for time-series trends (approval patterns by year/quarter) — critical for the "trends over time" project question.
-Loan Title	object	object (or category)	Free-text loan purpose (e.g., "Debt consolidation"). Useful for text analysis, word clouds, or grouping. Can convert to category if memory is tight.
-Risk_Score	float64	float64	Borrower risk/FICO-like score. Key numeric feature for approval decisions and identifying "missed good loans" (high score but declined). Handles NaNs gracefully.
-Debt-To-Income Ratio	object	object (then → float)	Stored as string like "15.5%" or "NA". Load as object to avoid errors, then clean (str.rstrip('%') and convert to float) for correlation with default risk and DTI distribution analysis.
-Zip Code	object	object	Postal code (e.g., "123xx"). Treated as string for geographic grouping. Enables state-level or regional pattern discovery without numeric misinterpretation.
-State	object	object (or category)	2-letter state code. Perfect as categorical for count plots, approval rates by state, and geographic insights. Low cardinality → convert to category for memory savings.
-Employment Length	object	object (then → numeric)	Strings like "10+ years", "< 1 year". Load as object, then extract numeric value for employment stability analysis (strong predictor of loan success/default).
-Policy Code	int64	int64 (or category)	Integer code (typically 0 = declined under policy). Acts as the target label for approval modeling. Small integers → very memory efficient.
